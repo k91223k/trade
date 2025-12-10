@@ -1,0 +1,273 @@
+/* ---------------------------------
+   1. Global Reset & Typography
+--------------------------------- */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background: #f4f4f4;
+  color: #333;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ---------------------------------
+   2. Header and Navigation (最終間距和對齊修正)
+--------------------------------- */
+header {
+  background: #0b8457;
+  padding: 18px 20px;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+h1 {
+  margin: 0;
+  padding: 2px 0;
+  min-width: 250px;
+  /* 確保短標題時的視覺平衡 */
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+/* 導航連結群組 */
+nav {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+nav a {
+  color: white;
+  white-space: nowrap;
+  text-decoration: none;
+  padding: 5px 15px;
+  margin: 0;
+}
+
+/* 使用者資訊區域 */
+#user-area {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* ---------------------------------
+   3. Main Layout & Headings
+--------------------------------- */
+section {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+section h2 {
+  margin-bottom: 15px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+/* ---------------------------------
+   4. Search, Filter, and Sort Controls
+--------------------------------- */
+#filter-sort-area {
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+/* 搜尋區域 */
+#search-area {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex-grow: 1;
+  max-width: 70%;
+}
+
+/* 排序區域 */
+#sort-area {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* 搜尋輸入框 */
+#searchInput {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  height: 40px;
+  box-sizing: border-box;
+  flex-grow: 1;
+  min-width: 150px;
+}
+
+/* 排序下拉選單的樣式 */
+#sortSelect {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  height: 40px;
+  min-width: 150px;
+  cursor: pointer;
+}
+
+
+/* ---------------------------------
+   5. Form and Inputs (精確排版與統一高度)
+--------------------------------- */
+
+/* 通用表單佈局 */
+#registerForm,
+#postForm,
+#loginForm {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 15px;
+  width: fit-content;
+}
+
+/* 統一所有輸入框和 textarea 的基礎樣式 */
+#loginForm input,
+#registerForm input,
+#postForm input,
+#postForm textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  height: 40px;
+  box-sizing: border-box;
+  width: auto;
+  min-width: 150px;
+}
+
+/* 確保登入/註冊輸入框寬度一致 */
+#loginForm input,
+#registerForm input {
+  width: 200px;
+  min-width: 200px;
+}
+
+/* Button 樣式 (統一) */
+button {
+  cursor: pointer;
+  background: #0b8457;
+  color: white;
+  padding: 0px 20px;
+  border: none;
+  border-radius: 5px;
+  height: 40px;
+  box-sizing: border-box;
+  min-width: 80px;
+  white-space: nowrap;
+}
+
+/* Delete button */
+.delete-btn {
+  background: #c9302c;
+  min-width: 100px;
+}
+
+/* 錯誤訊息 */
+.error {
+  color: red;
+  width: 100%;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+/* ---------------------------------
+   6. Product List and Cards
+--------------------------------- */
+#product-list {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.product {
+  background: #ffffff;
+  width: 200px;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.p-img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-bottom: 10px;
+}
+
+/* ---------------------------------
+   7. Product Detail Page Layout (商品詳情頁面雙欄佈局)
+--------------------------------- */
+
+#detail {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+  padding: 30px 20px;
+}
+
+.detail-img {
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  flex-shrink: 0;
+}
+
+.product-info {
+  flex-grow: 1;
+}
+
+.product-info p {
+  line-height: 1.6;
+}
+
+/* 聯絡賣家按鈕樣式 */
+.contact-btn {
+  display: inline-block;
+  cursor: pointer;
+  background: #1eaf68;
+  color: white !important;
+  text-decoration: none;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  margin-top: 20px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+
+.contact-btn:hover {
+  background: #0b8457;
+}
+
+/* 確保刪除按鈕與聯絡按鈕的間距和定位 */
+.product-info .delete-btn {
+  margin-top: 20px;
+  /* 這裡不再需要 margin-left: 10px; 因為 contact-btn 和 delete-btn 都是 display: block 或 inline-block，會自然間隔 */
+}

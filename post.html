@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+   
+  <meta charset="UTF-8">
+    <title>刊登商品</title>
+   
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <header>
+      <h1>校園二手交易平台</h1>
+
+      <div class="nav-right">
+          <nav>
+              <a href="index.html">首頁</a>
+              <a href="post.html">刊登商品</a>
+              <a href="register.html" id="registerLink">註冊</a>
+              <a href="login.html" id="loginLink">登入</a>
+            </nav>
+
+          <div id="user-area">
+              <span id="userInfo"></span>
+              <button id="logoutBtn" type="button">登出</button>
+            </div>
+        </div>
+  </header>
+
+  <section>
+      <h2>刊登新商品</h2>
+      <form id="postForm">
+          <input type="text" id="title" placeholder="商品名稱" required />
+          <input type="number" id="price" placeholder="價格" required />
+          <textarea id="desc" placeholder="商品描述" required></textarea>
+
+          <input type="url" id="imgUrl" placeholder="圖片網址 (請貼上圖片的 URL)" required />
+
+          <button type="submit">送出商品</button>
+        </form>
+  </section>
+
+  <script src="main.js"></script>
+
+</body>
+
+</html>

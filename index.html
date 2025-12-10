@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+   
+  <meta charset="UTF-8" />
+    <title>校園二手交易平台 - 首頁</title>
+   
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <header>
+      <h1>校園二手交易平台</h1>
+
+      <div class="nav-right">
+          <nav>
+              <a href="index.html">首頁</a>
+              <a href="post.html">刊登商品</a>
+              <a href="register.html" id="registerLink">註冊</a>
+              <a href="login.html" id="loginLink">登入</a>
+            </nav>
+
+          <div id="user-area">
+              <span id="userInfo"></span>
+              <button id="logoutBtn" type="button">登出</button>
+            </div>
+        </div>
+  </header>
+
+  <div id="filter-sort-area">
+    <div id="search-area">
+      <input type="text" id="searchInput" placeholder="請輸入商品名稱關鍵字" />
+      <button onclick="handleSearch()">搜尋</button>
+    </div>
+
+    <div id="sort-area">
+      <label for="sortSelect">排序：</label>
+      <select id="sortSelect" onchange="handleSort()">
+        <option value="default">最新上架</option>
+        <option value="price-asc">價格：低到高</option>
+        <option value="price-desc">價格：高到低</option>
+      </select>
+    </div>
+  </div>
+
+  <section id="products">
+      <h2>商品列表</h2>
+      <div id="product-list"></div>
+  </section>
+
+  <script src="main.js"></script>
+</body>
+
+</html>

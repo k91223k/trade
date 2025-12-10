@@ -1,0 +1,104 @@
+{
+  "products": [
+    {
+      "id": "1",
+      "title": "二手教科書：計算機概論",
+      "price": "500",
+      "desc": "上學期使用的，九成新，無劃記。",
+      "img": "https://im1.book.com.tw/image/getImage?i=https://www.books.com.tw/img/001/098/83/0010988394.jpg&v=662a30b7k&w=375&h=375",
+      "seller": "test@school.com"
+    },
+    {
+      "id": "2",
+      "title": "9.9成新藍牙耳機",
+      "price": "1200",
+      "desc": "只用過一次，音質超棒，附原裝盒。",
+      "img": "https://cdn.cybassets.com/media/W1siZiIsIjMwMDk4L3Byb2R1Y3RzLzQ4NDExODI5LzE3MjU0MTk2MzRfNzBkZDdlNzU4NTFjNWZiMWQzYmYuanBlZyJdLFsicCIsInRodW1iIiwiNjAweDYwMCJdXQ.jpeg?sha=dfac4e92a3a01f94",
+      "seller": "admin@school.com"
+    },
+    {
+      "id": "cb87",
+      "title": "54432",
+      "price": "250",
+      "desc": "\n425",
+      "img": "https://storage.googleapis.com/novel-star-prod/fs/cover/1ea36575-d038-48c1-87ce-1e848eeaf99b.jpg",
+      "seller": "k91223k@gmail.com"
+    },
+    {
+      "id": "44ce",
+      "title": "4563",
+      "price": "54654",
+      "desc": "465",
+      "img": "https://storage.googleapis.com/novel-star-prod/fs/cover/1ea36575-d038-48c1-87ce-1e848eeaf99b.jpg",
+      "seller": "k91223k@gmail.com"
+    },
+    {
+      "id": "7048",
+      "title": "546",
+      "price": "546",
+      "desc": "456",
+      "img": "https://storage.googleapis.com/novel-star-prod/fs/cover/1ea36575-d038-48c1-87ce-1e848eeaf99b.jpg",
+      "seller": "k91223k@gmail.com"
+    },
+    {
+      "id": "c989",
+      "title": "213213",
+      "price": "5235",
+      "desc": "546345",
+      "img": "https://storage.googleapis.com/novel-star-prod/fs/cover/1ea36575-d038-48c1-87ce-1e848eeaf99b.jpg",
+      "seller": "k91223k@gmail.com"
+    },
+    {
+      "id": "430e",
+      "title": "213",
+      "price": "53",
+      "desc": "23",
+      "img": "https://storage.googleapis.com/novel-star-prod/fs/cover/1ea36575-d038-48c1-87ce-1e848eeaf99b.jpg",
+      "seller": "k91223k@gmail.com"
+    },
+    {
+      "id": "40a4",
+      "title": "543654",
+      "price": "250",
+      "desc": "4524",
+      "img": "https://storage.googleapis.com/novel-star-prod/fs/cover/1ea36575-d038-48c1-87ce-1e848eeaf99b.jpg",
+      "seller": "k91223k@gmail.com"
+    },
+    {
+      "id": "51b5",
+      "title": "54242",
+      "price": "250",
+      "desc": "20542",
+      "img": "https://storage.googleapis.com/novel-star-prod/fs/cover/1ea36575-d038-48c1-87ce-1e848eeaf99b.jpg",
+      "seller": "k91223k@gmail.com"
+    },
+    {
+      "id": "ca7b",
+      "title": "75",
+      "price": "545",
+      "desc": "\n45",
+      "img": "https://storage.googleapis.com/novel-star-prod/fs/cover/1ea36575-d038-48c1-87ce-1e848eeaf99b.jpg",
+      "seller": "k91223k@gmail.com"
+    }
+  ],
+  "users": [
+    {
+      "email": "test@school.com",
+      "password": "123",
+      "id": "0d3e",
+      "verified": true
+    },
+    {
+      "email": "admin@school.com",
+      "password": "123",
+      "id": "f326",
+      "verified": true
+    },
+    {
+      "id": "9924",
+      "email": "k91223k@gmail.com",
+      "password": "123",
+      "verified": true
+    }
+  ]
+}
