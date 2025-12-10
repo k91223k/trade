@@ -15,7 +15,7 @@ a {
 }
 
 /* ---------------------------------
-   2. Header and Navigation (最終間距和對齊修正)
+   2. Header and Navigation
 --------------------------------- */
 header {
   background: #0b8457;
@@ -30,7 +30,6 @@ h1 {
   margin: 0;
   padding: 2px 0;
   min-width: 250px;
-  /* 確保短標題時的視覺平衡 */
 }
 
 .nav-right {
@@ -77,7 +76,7 @@ section h2 {
 }
 
 /* ---------------------------------
-   4. Search, Filter, and Sort Controls
+   4. Search, Filter, and Sort Controls (index.html)
 --------------------------------- */
 #filter-sort-area {
   padding: 20px;
@@ -129,12 +128,18 @@ section h2 {
 
 
 /* ---------------------------------
-   5. Form and Inputs (精確排版與統一高度)
+   5. Form and Inputs (通用樣式與排版)
 --------------------------------- */
 
-/* 通用表單佈局 */
+/* 刊登商品和註冊表單 (垂直排列) */
 #registerForm,
-#postForm,
+#postForm {
+  display: block;
+  margin-bottom: 20px;
+  max-width: 500px;
+}
+
+/* 登入表單 (水平排列) */
 #loginForm {
   display: flex;
   flex-wrap: wrap;
@@ -153,15 +158,22 @@ section h2 {
   border-radius: 4px;
   height: 40px;
   box-sizing: border-box;
-  width: auto;
+  width: 100%;
+  margin-bottom: 15px;
   min-width: 150px;
 }
 
-/* 確保登入/註冊輸入框寬度一致 */
+/* 確保登入輸入框在水平排列時有固定寬度 */
 #loginForm input,
 #registerForm input {
   width: 200px;
   min-width: 200px;
+}
+
+/* 確保刊登頁面的 textarea 有足夠的高度 */
+#postForm textarea {
+  height: 120px;
+  resize: vertical;
 }
 
 /* Button 樣式 (統一) */
@@ -176,6 +188,13 @@ button {
   box-sizing: border-box;
   min-width: 80px;
   white-space: nowrap;
+}
+
+/* 刊登頁面的送出按鈕 (讓它佔滿一行) */
+#postForm button {
+  width: 100%;
+  height: auto;
+  padding: 10px 20px;
 }
 
 /* Delete button */
@@ -193,7 +212,32 @@ button {
 }
 
 /* ---------------------------------
-   6. Product List and Cards
+   6. Post Notes (刊登須知樣式 post.html)
+--------------------------------- */
+.post-notes {
+  width: 100%;
+  max-width: 500px;
+  margin-top: 30px;
+  padding: 20px;
+  background: #e9e9e9;
+  border-radius: 8px;
+  border-left: 5px solid #0b8457;
+}
+
+.post-notes h3 {
+  margin-top: 0;
+  color: #0b8457;
+}
+
+.post-notes ul {
+  list-style: disc inside;
+  padding-left: 0;
+  line-height: 1.8;
+}
+
+
+/* ---------------------------------
+   7. Product List and Cards (index.html)
 --------------------------------- */
 #product-list {
   display: flex;
@@ -219,7 +263,7 @@ button {
 }
 
 /* ---------------------------------
-   7. Product Detail Page Layout (商品詳情頁面雙欄佈局)
+   8. Product Detail Page Layout (product.html)
 --------------------------------- */
 
 #detail {
@@ -240,6 +284,9 @@ button {
 
 .product-info {
   flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  /* 讓內容垂直排列 */
 }
 
 .product-info p {
@@ -266,8 +313,36 @@ button {
   background: #0b8457;
 }
 
+/* 交易安全提醒樣式 */
+.safety-alert {
+  margin-top: 30px;
+  padding: 15px;
+  border: 1px solid #ffcc00;
+  background-color: #fffde7;
+  border-radius: 6px;
+  font-size: 14px;
+  color: #555;
+}
+
+.safety-alert b {
+  color: #cc9900;
+}
+
 /* 確保刪除按鈕與聯絡按鈕的間距和定位 */
 .product-info .delete-btn {
   margin-top: 20px;
-  /* 這裡不再需要 margin-left: 10px; 因為 contact-btn 和 delete-btn 都是 display: block 或 inline-block，會自然間隔 */
+  display: block;
+}
+
+/* 推薦商品列表樣式 */
+#recommended-list {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+  white-space: nowrap;
+}
+
+#recommendations {
+  margin-top: 20px;
 }

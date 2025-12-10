@@ -154,8 +154,7 @@ if (postForm) {
                 desc, 
                 img: imgUrl, 
                 seller: getUser(),
-                // 【新增】記錄刊登時間，用於「最新上架」排序
-                timestamp: Date.now() 
+                timestamp: Date.now() // 記錄刊登時間
             };
 
             try {
@@ -186,7 +185,7 @@ if (postForm) {
     5. 商品列表 index.html (GET 請求與排序/篩選功能)
 ------------------------------ */
 
-// 僅用於獲取所有商品數據
+// 僅用於獲取所有商品數據 (不帶搜尋參數)
 async function loadProducts() { 
     let url = `${API_BASE}/products`;
     try {
@@ -212,7 +211,7 @@ function handleSearch() {
     getCurrentFiltersAndRender();
 }
 
-// 【新增】處理排序下拉選單變更事件
+// 處理排序下拉選單變更事件
 function handleSort() {
     getCurrentFiltersAndRender();
 }
@@ -227,7 +226,7 @@ async function renderProducts(keyword = "", sortBy = "default") {
     const allProducts = await loadProducts(); 
     list.innerHTML = "";
     
-    // 2. 篩選邏輯 (根據關鍵字)
+    // 2. 執行前端篩選邏輯
     const trimmedKeyword = keyword.toLowerCase();
     
     const filteredProducts = trimmedKeyword
@@ -237,7 +236,7 @@ async function renderProducts(keyword = "", sortBy = "default") {
         : allProducts; 
 
     
-    // 3. 【新增】排序邏輯 (根據 sortBy 參數)
+    // 3. 排序邏輯
     filteredProducts.sort((a, b) => {
         const priceA = parseFloat(a.price);
         const priceB = parseFloat(b.price);
@@ -249,7 +248,6 @@ async function renderProducts(keyword = "", sortBy = "default") {
                 return priceB - priceA;
             case 'default': // 最新上架 (timestamp 大的在前)
             default:
-                // 檢查是否有 timestamp 欄位，沒有則用 ID 倒序
                 const timeA = a.timestamp || 0; 
                 const timeB = b.timestamp || 0; 
                 if (timeA && timeB) {
@@ -294,14 +292,56 @@ renderProducts();
 
 
 /* -----------------------------
-/* -----------------------------
-    6. 商品詳情 product.html (GET 請求與刪除/聯絡)
+    6. 商品詳情 product.html (GET 請求與刪除/聯絡/推薦)
 ------------------------------ */
 
 // 開啟商品詳細頁，傳遞字串 ID
 function openDetail(id) {
     location.href = `product.html?id=${id}`; 
 }
+
+// 載入推薦商品 (排除當前商品)
+async function loadRecommendations(currentId) {
+    const list = document.getElementById("recommended-list");
+    if (!list) return;
+
+    try {
+        const res = await fetch(`${API_BASE}/products`);
+        if (!res.ok) throw new Error(`HTTP 錯誤: ${res.status}`);
+        const allProducts = await res.json();
+
+        // 篩選出其他商品，並隨機選取 4 個
+        const recommendations = allProducts
+            .filter(p => String(p.id).trim() !== String(currentId).trim())
+            .sort(() => 0.5 - Math.random()) 
+            .slice(0, 4); 
+
+        if (recommendations.length === 0) {
+            list.innerHTML = "<p>暫無其他推薦商品。</p>";
+            return;
+        }
+
+        list.innerHTML = "";
+        recommendations.forEach(p => {
+            const item = document.createElement("div");
+            item.className = "product";
+            const productId = String(p.id).trim(); 
+
+            item.innerHTML = `
+                <img src="${p.img}" class="p-img"/>
+                <h3>${p.title}</h3>
+                <p>NT$ ${p.price}</p>
+                <button onclick="openDetail('${productId}')">查看商品</button> 
+            `;
+            list.appendChild(item);
+        });
+
+    } catch (err) {
+        list.innerHTML = "<p>推薦商品載入失敗。</p>";
+        console.error("載入推薦商品失敗", err);
+    }
+}
+
 
 async function loadDetailPage() {
     const box = document.getElementById("detail");
@@ -327,11 +367,10 @@ async function loadDetailPage() {
         const currentUser = getUser();
         const isOwner = p.seller === currentUser;
 
-        // 賣家 Email，用於聯絡
         const sellerEmail = p.seller || 'N/A';
         const subject = `詢問商品: ${p.title} (ID: ${p.id})`;
 
-        // 聯絡按鈕 HTML，使用 mailto 協定
+        // 聯絡按鈕 HTML
         const contactButton = `
             <a href="mailto:${sellerEmail}?subject=${encodeURIComponent(subject)}" class="contact-btn">
                 聯絡賣家：${sellerEmail}
@@ -345,7 +384,7 @@ async function loadDetailPage() {
             </button>` 
             : '';
 
-        // 渲染詳細資訊 (與 CSS 配合實現雙欄佈局)
+        // 渲染詳細資訊 
         box.innerHTML = `
             <img src="${p.img}" class="detail-img"/>
             
@@ -356,21 +395,29 @@ async function loadDetailPage() {
                 <p><small>刊登者: ${sellerEmail}</small></p>
 
                 ${!isOwner ? contactButton : ''}
-
                 ${deleteButton}
+                
+                <div class="safety-alert">
+                    <b>交易安全提醒：</b><br>
+                    建議在校園公共區域面交，避免直接提供個人隱私訊息給賣家。
+                </div>
             </div>
         `;
+
+        // 載入推薦商品
+        loadRecommendations(p.id); 
         
     } catch (err) {
         box.innerHTML = "<h2>讀取商品詳細失敗</h2>";
         console.error(err);
     }
 }
-
 // 確保只在 product.html 頁面運行
 if (document.getElementById("detail")) {
     loadDetailPage();
 }
+
+
 /* -----------------------------
     7. 刪除商品 (DELETE 請求)
 ------------------------------ */
